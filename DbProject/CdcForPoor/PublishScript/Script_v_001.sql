@@ -179,7 +179,7 @@ GO
 
 create function cdcp.ufn_StringToStringTableId (
   @StringInput varchar(max)
- ,@pDelem nvarchar(10))
+ ,@pDelem nvarchar(10) = ',')
 returns @OutputTable table (
   Id int
  ,[Value] varchar(max))
