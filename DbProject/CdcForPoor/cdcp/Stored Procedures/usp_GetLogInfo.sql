@@ -391,6 +391,7 @@ begin
            ,@PKt varchar(max)
            ,@PKValuet varchar(max)
            ,@DescrSearchInPk nvarchar(max)
+		   ,@resultOut varchar(max)
     declare db_cursor cursor for /*OldValue*/
       select id
             ,Dsql
@@ -423,7 +424,7 @@ begin
       from @cacheDsql
       where SourceSql = @Dsql
 
-      declare @resultOut varchar(max)
+      set @resultOut = null
       if @cacheOut is null
       begin
       begin try
