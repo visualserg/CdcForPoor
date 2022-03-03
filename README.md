@@ -2,7 +2,7 @@
 Mssql tool for tracking changed data based on triggers
 Mssql аудит данных для тех, у кого нет cdc
 
-Аудирование на основе триггеров
+Логирование на основе триггеров
 
 Навеяно постами
 https://stackoverflow.com/questions/19737723/log-record-changes-in-sql-server-in-an-audit-table
