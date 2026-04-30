@@ -52,6 +52,8 @@ DbProject/CdcForPoor/PublishScript/Script_v_001.sql
 
 Процедура `cdcp.usp_ManageTrigger` генерирует SQL-скрипт триггера для целевой таблицы (сама не выполняет - возвращает текст в OUT-параметре, чтобы его можно было просмотреть и применить вручную).
 
+В примере ниже включены все три события (`@Insert`/`@Update`/`@Delete`) для наглядности; по умолчанию логируются только `UPDATE`.
+
 ```sql
 declare @ResultSql varchar(8000)
 declare @DbgSqloutWithOutGo varchar(8000)
@@ -94,13 +96,23 @@ exec (@ResultSql)   -- применить
 
 ```sql
 exec cdcp.usp_GetLogInfo
-     @ShemaName    = 'dbo'
-    ,@TableName    = '_User'
-    ,@PK           = 'id'           -- для составного PK: 'col1:col2' (по алфавиту, asc)
-    ,@PKValue      = '42'           -- поддерживает LIKE: '236:%:1', '%:10'
-    ,@FieldInclude = ''             -- список через запятую; пусто = все колонки
-    ,@FieldExclude = ''             -- список через запятую
+     @ShemaName      = 'dbo'        -- имя параметра содержит опечатку (Shema, не Schema)
+    ,@TableName      = '_User'
+    ,@PK             = 'id'         -- для составного PK: 'col1:col2' (по алфавиту, asc)
+    ,@PKValue        = '42'         -- поддерживает LIKE: '236:%:1', '%:10'
+    ,@FieldInclude   = ''           -- список через запятую; пусто = все колонки
+    ,@FieldExclude   = ''           -- список через запятую
+    ,@MailRecipients = ''           -- адреса для уведомлений (см. ниже)
+    ,@Dbg            = 0            -- 1 = вывести промежуточные таблицы
+    ,@DbgNoSendEmail = 1            -- 1 = не отправлять email (рекомендуется при ad-hoc запуске)
 ```
+
+Процедура отправляет HTML-письма через `msdb.dbo.sp_send_dbmail`:
+
+- при наличии полей без description (предупреждение);
+- при перехваченной ошибке внутри `BEGIN TRY ... END CATCH` (диагностика).
+
+Поэтому в окружении должен быть настроен Database Mail и валидный профиль по умолчанию, либо нужно передавать `@DbgNoSendEmail = 1`. Параметр `@MailRecipients` принимает несколько адресов через запятую.
 
 ### 3. Управлять поведением колонок
 
