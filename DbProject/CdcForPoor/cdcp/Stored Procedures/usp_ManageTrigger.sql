@@ -226,27 +226,3 @@ begin
   end
     
 end
-
-/*Helper    
-    
-  declare @ResultSql varchar(8000)    
-  declare @DbgSqloutWithOutGo varchar(8000)  
-  exec cdcp.usp_ManageTrigger @SchemaName = 'dbo'    
-                             ,@TableName = '_User'    
-                             ,@Insert = 1    
-                             ,@Update = 1    
-                             ,@Delete = 1    
-                             ,@Disabled = 0    
-                             ,@Exist = 0 
-                             ,@DbgUseOut = 1    
-                             ,@DbgSqloutWithOutGo = @DbgSqloutWithOutGo out    
-                             ,@ResultSql = @ResultSql out
-
-  print @DbgSqloutWithOutGo 
-  print '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
-  print '>>>>>>>>>>>>>>>>>>>>>>>>>>'
-  print '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
-  print @ResultSql 
-
-  exec (@ResultSql);  
-*/

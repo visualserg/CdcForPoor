@@ -1,4 +1,4 @@
-﻿/* Процедура возвращает Id колонки (если ее нет, то создает) */
+/* Процедура возвращает Id колонки (если ее нет, то создает) */
 /* @ResultId - FieldId */
 /* @ResultLog - нужно ли логировать */
 
@@ -32,39 +32,3 @@ begin
 
   return
 end
-
-/*Helper  
-  begin tran  
-    declare @ResultId int  
-           ,@ResultLog bit  
-    exec [cdcp].usp_GetMergeField @TableSchema='dbo'
-                                 ,@TableName='_User'  
-                                 ,@FieldName='UserId'  
-                                 ,@ResultId=@ResultId out  
-                                 ,@ResultLog=@ResultLog out  
-    select @ResultId  
-    select @ResultLog  
-    select * from [cdcp].Field  
-  
-    --delete from [cdcp].Field where id=0  
-  rollback tran  
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

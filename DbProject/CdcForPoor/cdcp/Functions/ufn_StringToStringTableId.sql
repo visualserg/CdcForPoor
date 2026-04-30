@@ -24,8 +24,3 @@ begin
   return
 end
 
-/*Helper    
-  select * from cdcp.ufn_StringToStringTableId('мама мыла  раму: а, папа, - не мыл',':')
-  select * from cdcp.ufn_StringToStringTableId('рококо, кукуку,мме',',')
-*/
-

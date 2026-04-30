@@ -20,15 +20,3 @@ begin
 
   return
 end
-
-/*Helper
-  begin tran
-    declare @ResultId int
-    exec [cdcp].usp_GetMergeHost @HostName='host1'
-                                ,@ResultId=@ResultId out
-    select @ResultId
-    select * from [cdcp].[Host]
-
-    --delete from [cdcp].[Host] where id=0
-  rollback tran
-*/

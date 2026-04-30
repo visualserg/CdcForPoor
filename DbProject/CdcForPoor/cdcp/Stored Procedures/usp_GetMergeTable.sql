@@ -31,17 +31,3 @@ begin
 
   return
 end
-
-/*Helper  
-  begin tran  
-    declare @ResultId int  
-    exec [cdcp].usp_GetMergeTable @TableSchema='dbo' 
-                                ,@TableName='table1'  
-                                ,@ColumnNameDelimeter='UserId:LocalId'  
-                                ,@ResultId=@ResultId out  
-    select @ResultId  
-    select * from [cdcp].[Table]
-  
-    --delete from [cdcp].[Table] where id=32
-  rollback tran  
-*/

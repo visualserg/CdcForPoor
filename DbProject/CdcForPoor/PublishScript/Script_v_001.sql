@@ -199,11 +199,6 @@ begin
   end
   return
 end
-
-/*Helper    
-  select * from cdcp.ufn_StringToStringTableId('мама мыла  раму: а, папа, - не мыл',':')
-  select * from cdcp.ufn_StringToStringTableId('рококо, кукуку,мме',',')
-*/
 GO
 PRINT N'Выполняется создание [cdcp].[usp_GetMergeField]...';
 
@@ -243,23 +238,6 @@ begin
 
   return
 end
-
-/*Helper  
-  begin tran  
-    declare @ResultId int  
-           ,@ResultLog bit  
-    exec [cdcp].usp_GetMergeField @TableSchema='dbo'
-                                 ,@TableName='_User'  
-                                 ,@FieldName='UserId'  
-                                 ,@ResultId=@ResultId out  
-                                 ,@ResultLog=@ResultLog out  
-    select @ResultId  
-    select @ResultLog  
-    select * from [cdcp].Field  
-  
-    --delete from [cdcp].Field where id=0  
-  rollback tran  
-*/
 GO
 PRINT N'Выполняется создание [cdcp].[usp_GetMergeHost]...';
 
@@ -287,18 +265,6 @@ begin
 
   return
 end
-
-/*Helper
-  begin tran
-    declare @ResultId int
-    exec [cdcp].usp_GetMergeHost @HostName='host1'
-                                ,@ResultId=@ResultId out
-    select @ResultId
-    select * from [cdcp].[Host]
-
-    --delete from [cdcp].[Host] where id=0
-  rollback tran
-*/
 GO
 PRINT N'Выполняется создание [cdcp].[usp_GetMergeTable]...';
 
@@ -337,20 +303,6 @@ begin
 
   return
 end
-
-/*Helper  
-  begin tran  
-    declare @ResultId int  
-    exec [cdcp].usp_GetMergeTable @TableSchema='dbo' 
-                                ,@TableName='table1'  
-                                ,@ColumnNameDelimeter='UserId:LocalId'  
-                                ,@ResultId=@ResultId out  
-    select @ResultId  
-    select * from [cdcp].[Table]
-  
-    --delete from [cdcp].[Table] where id=32
-  rollback tran  
-*/
 GO
 PRINT N'Выполняется создание [cdcp].[usp_GetMergeUser]...';
 
@@ -378,18 +330,6 @@ begin
 
   return
 end
-
-/*Helper
-  begin tran
-    declare @ResultId int
-    exec [cdcp].usp_GetMergeUser @UserName='loc\m.urdun'
-                               ,@ResultId=@ResultId out
-    select @ResultId
-    select * from [cdcp].[User]
-
-    --delete from [cdcp].[User] where id=0
-  rollback tran
-*/
 GO
 PRINT N'Выполняется создание [cdcp].[usp_GetLogInfo]...';
 
@@ -983,52 +923,6 @@ begin
     end
   end catch
 end
-
-/*Helper                
-  exec cdcp.usp_GetLogInfo @TableName = 'Users'
-                          ,@PKValue = '31069:4'
-                          ,@Pk = 'IdUser:Property'
-
-  exec cdcp.usp_GetLogInfo @TableName = 'Users'
-                          ,@PKValue = '31069:4'
-                          ,@Pk = 'IdUser:Property'
-                          ,@Dbg = 1
-
-  exec cdcp.usp_GetLogInfo @TableName = 'ContractsProperties'
-                          ,@PKValue = '1197741:35'
-                          ,@Pk = 'ContractsId:PropertyId'
-                          ,@Dbg = 0
-
-  exec cdcp.usp_GetLogInfo @TableName = 'ContractsProperties'
-                          ,@PKValue = '1197741:35'
-                          ,@Pk = 'ContractsId:PropertyId'
-                          ,@Dbg = 1
-
-  exec cdcp.usp_GetLogInfo @TableName = 'Users'
-                          ,@PKValue = '884176'
-                          ,@Dbg = 0
-
-  exec cdcp.usp_GetLogInfo @TableName = 'Contracts'
-                          ,@PKValue = '1177393'
-                          ,@Dbg = 1
-
-  exec cdcp.usp_GetLogInfo @TableName = N'ContractsProperties'
-                          ,@PK = N'ContractsId:PropertyId'
-                          ,@PKValue = N'%:203'
-                          ,@Dbg = 1
-
-  exec cdcp.usp_GetLogInfo @TableName = 'Users'
-                          ,@PKValue = '1200033'
-                          ,@Dbg = 1
-
-  exec cdcp.usp_GetLogInfo @TableName = 'Users'
-                          ,@PKValue = '1175163'
-                          ,@Dbg = 1
-
-  exec cdcp.usp_GetLogInfo @TableName = 'Users'
-                          ,@PKValue = '1112050'
-                          ,@Dbg = 0
-*/
 GO
 SET ANSI_NULLS, QUOTED_IDENTIFIER ON;
 
@@ -1264,32 +1158,8 @@ begin
     raiserror (@errmes, 16, 2)
     return
   end
-    
+
 end
-
-/*Helper    
-    
-  declare @ResultSql varchar(8000)    
-  declare @DbgSqloutWithOutGo varchar(8000)  
-  exec cdcp.usp_ManageTrigger @SchemaName = 'dbo'    
-                             ,@TableName = '_User'    
-                             ,@Insert = 1    
-                             ,@Update = 1    
-                             ,@Delete = 1    
-                             ,@Disabled = 0    
-                             ,@Exist = 0 
-                             ,@DbgUseOut = 1    
-                             ,@DbgSqloutWithOutGo = @DbgSqloutWithOutGo out    
-                             ,@ResultSql = @ResultSql out
-
-  print @DbgSqloutWithOutGo 
-  print '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
-  print '>>>>>>>>>>>>>>>>>>>>>>>>>>'
-  print '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
-  print @ResultSql 
-
-  exec (@ResultSql);  
-*/
 GO
 PRINT N'Выполняется создание [cdcp].[tr_TriggerTemplate_v1]...';
 

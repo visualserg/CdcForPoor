@@ -20,15 +20,3 @@ begin
 
   return
 end
-
-/*Helper
-  begin tran
-    declare @ResultId int
-    exec [cdcp].usp_GetMergeUser @UserName='loc\m.urdun'
-                               ,@ResultId=@ResultId out
-    select @ResultId
-    select * from [cdcp].[User]
-
-    --delete from [cdcp].[User] where id=0
-  rollback tran
-*/
