@@ -411,10 +411,10 @@ begin
         declare @IdPk int
                ,@PkValueResult varchar(max)
         select @IdPk = id
-        from cdcp.cdcp.ufn_StringToStringTableId(@PKt, ':')
+        from cdcp.ufn_StringToStringTableId(@PKt, ':')
         where [Value] = @DescrSearchInPk
         select @PkValueResult = [Value]
-        from cdcp.cdcp.ufn_StringToStringTableId(@PKValuet, ':')
+        from cdcp.ufn_StringToStringTableId(@PKValuet, ':')
         where id = @IdPk
         set @Dsql = 'select @resultOut=cast((' + @Dsql + '''' + @PkValueResult + '''' + ') as varchar(max))'
       end
