@@ -785,7 +785,7 @@ begin
 
     /*Execute value*/
     declare @cacheDsql table(
-      SourceSql varchar(800) primary key
+      SourceSql nvarchar(max)
      ,ResultSql varchar(max))
     declare @cacheOut varchar(max)
     declare @Id int
